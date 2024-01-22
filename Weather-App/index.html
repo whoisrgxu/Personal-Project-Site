@@ -18,6 +18,7 @@
         <div class="weather">
             <img src="images/rain.png" class="weather-icon">
             <h1 class="temp">22°c</h1>
+            <p class="temp-range">7°/13°</p>
             <h2 class="city">New York</h2>
             <div class="details">
                 <div class="col">
@@ -52,9 +53,10 @@ async function checkWeather(city) {
         document.querySelector(".error").style.display = "block";
     } else {
         var data = await response.json();
-
+        console.log(data);
         document.querySelector(".city").innerHTML = data.name;
         document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
+        document.querySelector(".temp-range").innerHTML = Math.round(data.main.temp_min) + "° / " + Math.round(data.main.temp_max) + "°";
         document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
         document.querySelector(".wind").innerHTML = Math.round(data.wind.speed) + " km/h";
 
